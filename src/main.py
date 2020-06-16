@@ -1,13 +1,21 @@
 # Resolve the problem!!
 import string
+import random
 
 SYMBOLS = list('!"#$%&\'()*+,-./:;?@[]^_`{|}~')
 
 
-def generate_password():
-    # Start coding here
-
-
+def generate_password():    
+    size_pass = random.randrange(8,16)
+    password = []    
+    for i in range(size_pass):
+        password.append(random.choice(string.ascii_lowercase))
+        password.append(random.choice(string.ascii_uppercase))
+        password.append(random.choice(string.digits))
+        password.append(random.choice(str(SYMBOLS)))
+    random.shuffle(password)
+    return ''.join(password)[0:size_pass]
+    
 def validate(password):
 
     if len(password) >= 8 and len(password) <= 16:
